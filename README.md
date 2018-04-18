@@ -1,1 +1,11 @@
-# There-is-no-pathetic-card-in-Deque-Brown
+# Operations into Deque-ing
+
+
+First stuff put in:
+*addFirst()
+*addLast()
+*peekFirst()
+*peekLast()
+*removeFirst()
+*removeLast()
+*size()
