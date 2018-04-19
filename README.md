@@ -9,6 +9,8 @@ First stuff put in:
 - removeFirst()
 - removeLast()
 - size()
+- removeFirstOccurrence()
+- removeLastOccurrence()
 
 How to maintain runnability (To-do list):
 
