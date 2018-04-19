@@ -6,7 +6,7 @@
  * Stores type T where T is a typed-variable
  *****************************************************************/
 
-public interface Deque<T> implements Iterable<T> {
+public interface Deque<T> extends Iterable<T> {
     //add to the beginning of the queue
     public void addFirst(T x);
     //add to the end of queue

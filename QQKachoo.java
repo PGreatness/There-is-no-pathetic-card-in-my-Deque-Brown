@@ -5,7 +5,8 @@
  * circular to avoid mishaps. 
  * Represents type T where T is a typed-variable
  ****************************************************************/
-
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 public class QQKachoo<T> implements Deque<T> {
     private DLLNode<T> front;
     private DLLNode<T> end;
@@ -163,8 +164,8 @@ public class QQKachoo<T> implements Deque<T> {
         while (tmp != null) { //tmp checked through all through to the front
             if (tmp.getCargo().equals(val)) { //tmp's cargo matches given
                 if (tmp.getNext() != null && tmp.getPrev() != null) {
-                tmp.getPrev().setNext(tmp.getNext()); //previous node of tmp sets next as the node ahead of tmp
-                tmp.getNext().setPrev(tmp.getPrev()); //next node of tmp sets prev as the node before tmp
+		    tmp.getPrev().setNext(tmp.getNext()); //previous node of tmp sets next as the node ahead of tmp
+		    tmp.getNext().setPrev(tmp.getPrev()); //next node of tmp sets prev as the node before tmp
                 }else{
                     if (tmp.getNext() == null) { //tmp is last elem of queue
                         end = end.getPrev(); //move end up one
@@ -194,6 +195,81 @@ public class QQKachoo<T> implements Deque<T> {
         }
         return ans + "END";
     }
+    public Iterator<T> iterator()
+    { 
+	return new MyIterator();
+    }
+    private class MyIterator implements Iterator<T> 
+    {
+	private DLLNode<T> _dummy;   // dummy node to tracking pos
+	private boolean _okToRemove; // flag indicates next() was called
+    
+	//constructor 
+	public MyIterator() 
+	{
+	    //place dummy node in front of head
+	    _dummy = new DLLNode<T>( null, null, front );
+	    _okToRemove = false;
+	}
+	
+	//-----------------------------------------------------------
+	//--------------v  Iterator interface methods  v-------------
+	//return true if iteration has more elements.
+	public boolean hasNext() 
+	{
+	    return _dummy.getNext() != null;
+	}
+
+
+	//return next element in this iteration
+	public T next() 
+	{
+	    _dummy = _dummy.getNext();
+	    if ( _dummy == null )
+		throw new NoSuchElementException();
+	    _okToRemove = true;
+	    return _dummy.getCargo();
+	}
+
+
+	//return last element returned by this iterator (from last next() call)
+	//postcondition: maintains invariant that _dummy always points to a node
+	//               (...so that hasNext() will not crash)
+	public void remove() 
+	{
+	    if ( ! _okToRemove )
+		throw new IllegalStateException("must call next() beforehand");
+	    _okToRemove = false;
+
+	    //If removing only remaining node...
+	    //maintain invariant that _dummy always points to a node
+	    //   (...so that hasNext() will not crash)
+	    if ( front == end ) {
+		front = end = null;
+	    }
+	    //if removing first node...
+	    else if ( front == _dummy ) {
+		front = front.getNext();
+		front.setPrev( null ); //just to save mem
+	    }
+	    //if removing last node...
+	    else if ( end == _dummy ) {
+		end = end.getPrev();
+		end.setNext( null );
+	    }
+	    //if removing an interior node...
+	    else {
+		_dummy.getNext().setPrev( _dummy.getPrev() );
+		_dummy.getPrev().setNext( _dummy.getNext() );
+		//Q: How could the line below cause trouble?
+		//_dummy = _dummy.getPrev();
+	    }
+
+	    size--; //decrement size attribute of outer class LList      
+	}//end remove()
+	//--------------^  Iterator interface methods  ^-------------
+	//-----------------------------------------------------------
+    }//*************** end inner class MyIterator ***************
 
     public static void main(String[] args) {
         QQKachoo<String> test = new QQKachoo<String>();
@@ -205,7 +281,13 @@ public class QQKachoo<T> implements Deque<T> {
         System.out.println(test);
         test.addLast("qwerty");
         test.addLast("x");
-        System.out.println(test);
+	System.out.println("Now testing iterability.....");
+	System.out.println(test);
+	for (String x:test){
+	    System.out.println(x);
+
+	}
+	System.out.println("iterability successful");
         System.out.println(test.front.getCargo());
         System.out.println(test.removeFirstOccurrence("qwerty"));
         System.out.println(test.front.getCargo());        
