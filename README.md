@@ -11,6 +11,9 @@ First stuff put in:
 - removeLast()
 - removeFirstOccurrence()
 - removeLastOccurrence()
+- Iterator()
+
+Rest of the methods presented in the [Deque API](https://docs.oracle.com/javase/7/docs/api/java/util/Deque.html) page (from Oracle) can be added later on.
 
 How to maintain runnability (To-do list):
 
