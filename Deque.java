@@ -12,8 +12,12 @@ public interface Deque<T> extends Iterable<T> {
     //add to the end of queue
     public void addLast(T x);
     //return the first elem w/o altering queue
-    public T peekFirst();
+    public T getFirst();
     //return last elem w/o altering queue
+    public T getLast();
+    //attempt to return the first elem w/o altering the queue. false if failed
+    public T peekFirst();
+    //attempt to return the end elem w/o altering the queue. false if failed
     public T peekLast();
     //# of meaningful items in queue
     public int size();
@@ -25,4 +29,12 @@ public interface Deque<T> extends Iterable<T> {
     public boolean removeFirstOccurrence(T x);
     //true if the last occurrence of the val is removed, false else
     public boolean removeLastOccurrence(T x);
+    //remove the front elem in the queue or return null
+    public T poll();
+    //remove the front elem in the queue or return null
+    public T pollFirst();
+    //attempt to insert elem at the front. return false if not possible
+    public boolean offerFirst(T x);
+    //attempt to insert elem at the end. return false if not possible
+    public boolean offerLast(T x);
 }
