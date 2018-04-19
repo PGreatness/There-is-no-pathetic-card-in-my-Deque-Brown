@@ -61,6 +61,9 @@ public class QQKachoo<T> implements Deque<T> {
      * @see {@code getLast()}
      **************************************************************/
     public T getFirst() {
+        if (front == null) {
+            throw new NoSuchElementException();
+        }
         return front.getCargo();
     }
     /************************************************************
@@ -70,6 +73,9 @@ public class QQKachoo<T> implements Deque<T> {
      * @see {@code getFirst()}
      ***********************************************************/
     public T getLast() {
+        if (end == null) {
+            throw new NoSuchElementException();
+        }
         return end.getCargo();
     }
     /********************************************************
@@ -89,7 +95,7 @@ public class QQKachoo<T> implements Deque<T> {
     public T removeFirst() {
         DLLNode<T> tmp; //a temp storage used for the cargo it holds
         if (front == null) { //front doesn't exist, therefore, queue is empty
-            return null;
+            throw new NoSuchElementException();
         }else{ //front does exist
             tmp = front; //tmp points to current front
             front = front.getPrev(); //front is changed to the next elem in queue
@@ -109,7 +115,7 @@ public class QQKachoo<T> implements Deque<T> {
     public T removeLast() {
         DLLNode<T> tmp; //tmp storage used for the cargo
         if (end == null) { //end doesn't exist because queue is empty
-            return null;
+            throw new NoSuchElementException();
         }else{ //queue does exist
             tmp = end; //tmp points to current end
             end = end.getNext(); //end moves up one node
@@ -234,6 +240,17 @@ public class QQKachoo<T> implements Deque<T> {
         }catch(Exception e) {
             return false;
         }
+    }
+
+    public boolean contains(T val) {
+        Iterator<T> itr = this.iterator();
+        while (itr.hasNext()) {
+            T nodeCargo = itr.next();
+            if (nodeCargo.equals(val)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     //String representation of the collection

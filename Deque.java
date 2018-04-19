@@ -37,4 +37,7 @@ public interface Deque<T> extends Iterable<T> {
     public boolean offerFirst(T x);
     //attempt to insert elem at the end. return false if not possible
     public boolean offerLast(T x);
+    //puruses through collection searching for val, returns true if found. 
+    //collection is unaltered
+    public boolean contains(T x);
 }
