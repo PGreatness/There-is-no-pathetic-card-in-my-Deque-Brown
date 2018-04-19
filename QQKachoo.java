@@ -57,24 +57,24 @@ public class QQKachoo<T> implements Deque<T> {
     /**************************************************************
      * Return the value of the front of the queue without altering
      * it.
-     * @return T where T is a typed-variable
-     * @see {@code peekLast()}
+     * @return <i>T</i> where <i>T</i> is a typed-variable
+     * @see {@code getLast()}
      **************************************************************/
-    public T peekFirst() {
+    public T getFirst() {
         return front.getCargo();
     }
-    /**
+    /************************************************************
      * Return the value of the end of the queue without altering
      * it.
-     * @return T where T is a typed-variable
-     * @see {@code peekFirst()}
-     */
-    public T peekLast() {
+     * @return <i>T</i> where <i>T</i> is a typed-variable
+     * @see {@code getFirst()}
+     ***********************************************************/
+    public T getLast() {
         return end.getCargo();
     }
     /********************************************************
      * Return the number of meaningful elements in the queue
-     * @return int, number of meaningful elements in queue
+     * @return <i>int</i>, number of meaningful elements in queue
      ********************************************************/
     public int size() {
         return size;
@@ -83,7 +83,7 @@ public class QQKachoo<T> implements Deque<T> {
     /*******************************************************
      * Remove the first element of the queue and return it.
      * The next element becomes the front.
-     * @return T, where T is a typed-variable
+     * @return <i>T</i>, where <i>T</i> is a typed-variable
      * @see {@code removeLast()}
      ******************************************************/
     public T removeFirst() {
@@ -103,7 +103,7 @@ public class QQKachoo<T> implements Deque<T> {
     /*****************************************************
      * Remove last element of the queue and return it.
      * The previous element becomes the end.
-     * @return T, where T is a typed-variable
+     * @return <i>T</i>, where <i>T</i> is a typed-variable
      * @see {@code removeFirst()}
      ****************************************************/
     public T removeLast() {
@@ -124,7 +124,8 @@ public class QQKachoo<T> implements Deque<T> {
      * Removes the first occurrence of the value given.
      * This starts from the front and goes to the end.
      * @param val, where val is a typed-variable
-     * @return true if value removed, false if doesn't exist in queue
+     * @return <i>true</i> if value removed, <i>false</i> if doesn't exist 
+     * in queue
      * @see {@code removeLastOccurrence()}
      ******************************************************************/
     public boolean removeFirstOccurrence(T val) {
@@ -156,7 +157,8 @@ public class QQKachoo<T> implements Deque<T> {
      * Removes the last occurrence of the value given.
      * This starts from the end and goes to the front.
      * @param val, where val is a typed-variable
-     * @return true if value removed, false if doesn't exist in queue
+     * @return <i>true</i> if value removed, <i>false</i>
+     *  if doesn't exist in queue
      * @see {@code removeFirstOccurrence()}
      *****************************************************************/
     public boolean removeLastOccurrence(T val) {
@@ -184,6 +186,55 @@ public class QQKachoo<T> implements Deque<T> {
         }
         return false; //val was not in queue 
     }
+    /****************************************************************
+     * Returns true if there are no meaningful elements in the queue
+     * @return <i>true</i> if queue is empty, <i>false</i> otherwise
+     ***************************************************************/
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public T poll() {
+        try {
+            return removeFirst();
+        }catch(Exception e) {
+            return null;
+        }
+    }
+    public T pollFirst() {
+        return poll();
+    }
+    public boolean offerFirst(T val) {
+        try {
+            addFirst(val);
+            return true;
+        }catch(Exception e) {
+            return false;
+        }
+    }
+    public T peekFirst() {
+        try {
+            return getFirst();
+        }catch(Exception e) {
+            return null;
+        }
+    }
+
+    public T peekLast() {
+        try {
+            return getLast();
+        }catch(Exception e) {
+            return null;
+        }
+    }
+    public boolean offerLast(T val) {
+        try {
+            addLast(val);
+            return true;
+        }catch(Exception e) {
+            return false;
+        }
+    }
 
     //String representation of the collection
     public String toString() {
@@ -195,10 +246,12 @@ public class QQKachoo<T> implements Deque<T> {
         }
         return ans + "END";
     }
+
     public Iterator<T> iterator()
-    { 
+    {
 	return new MyIterator();
     }
+    //Nested class Iterator
     private class MyIterator implements Iterator<T> 
     {
 	private DLLNode<T> _dummy;   // dummy node to tracking pos
@@ -287,7 +340,7 @@ public class QQKachoo<T> implements Deque<T> {
 	    System.out.println(x);
 
 	}
-	System.out.println("iterability successful");
+	    System.out.println("iterability successful");
         System.out.println(test.front.getCargo());
         System.out.println(test.removeFirstOccurrence("qwerty"));
         System.out.println(test.front.getCargo());        
