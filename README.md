@@ -1,5 +1,5 @@
 # Operations into Deque-ing
-
+## By Team Len-vo 3.0 (Roster: Ahnaf Hasan, Kevin Wang, Peter Cwalina)
 
 First stuff put in:
 - addFirst()
