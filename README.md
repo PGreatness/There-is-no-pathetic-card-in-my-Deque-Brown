@@ -2,13 +2,13 @@
 ## By Team Len-vo 3.0 (Roster: Ahnaf Hasan, Kevin Wang, Peter Cwalina)
 
 First stuff put in:
+- size()
 - addFirst()
 - addLast()
 - peekFirst()
 - peekLast()
 - removeFirst()
 - removeLast()
-- size()
 - removeFirstOccurrence()
 - removeLastOccurrence()
 
