@@ -1,5 +1,5 @@
 # Operations into Deque-ing
-## By Team Len-vo 3.0 (Roster: Ahnaf Hasan, Kevin Wang, Peter Cwalina)
+## By Team Leno-vo 3.0 (Roster: Ahnaf Hasan, Kevin Wang, Peter Cwalina)
 
 The methods defined from the [Deque API](https://docs.oracle.com/javase/7/docs/api/java/util/Deque.html) page in QQKachoo are as follows.
 - size()
