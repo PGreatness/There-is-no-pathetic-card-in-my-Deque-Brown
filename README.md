@@ -20,6 +20,8 @@ The methods defined from the [Deque API](https://docs.oracle.com/javase/7/docs/a
 
 _Note that the implementation of the methods may not reflect the order that they were placed in in the README_
 
+A doubly linked node-based architecture was implemented because it allows easy trasversal between nodes, and saves both time and memory by having both a front an end modifiable in constant time.
+
 The various elements explored in this repo stems from the Deque class available in the Java API. The methods are developed through a bottom-up approach where the most basic of the methods are added and revised by a team of three.
 
 4 steps of maintaining runnability (To-do list):
