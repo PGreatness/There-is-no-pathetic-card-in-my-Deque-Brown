@@ -18,6 +18,7 @@ public class QQKachoo<T> implements Deque<T> {
         end = null;
         size = 0;
     }
+	
     /*******************************************
      * Add given value to the front of the queue.
      * @param val where is the value to be added
@@ -35,6 +36,7 @@ public class QQKachoo<T> implements Deque<T> {
         }
         size++; //increment size
     }
+	
     /**************************************
      * Add given value to the end of queue
      * @param val value to be added
@@ -66,6 +68,7 @@ public class QQKachoo<T> implements Deque<T> {
         }
         return front.getCargo();
     }
+	
     /************************************************************
      * Return the value of the end of the queue without altering
      * it.
@@ -79,6 +82,7 @@ public class QQKachoo<T> implements Deque<T> {
         }
         return end.getCargo();
     }
+	
     /********************************************************
      * Return the number of meaningful elements in the queue
      * @return <i>int</i>, number of meaningful elements in queue
@@ -108,6 +112,7 @@ public class QQKachoo<T> implements Deque<T> {
         size--; //decrement size
         return tmp.getCargo();
     }
+	
     /*****************************************************
      * Remove last element of the queue and return it.
      * The previous element becomes the end.
@@ -129,6 +134,7 @@ public class QQKachoo<T> implements Deque<T> {
         size--; //decrement size
         return tmp.getCargo();
     }
+	
     /******************************************************************
      * Removes the first occurrence of the value given.
      * This starts from the front and goes to the end.
@@ -162,6 +168,7 @@ public class QQKachoo<T> implements Deque<T> {
         }
         return false; //val does not exist in collection
     }
+	
     /******************************************************************
      * Removes the last occurrence of the value given.
      * This starts from the end and goes to the front.
@@ -195,6 +202,7 @@ public class QQKachoo<T> implements Deque<T> {
         }
         return false; //val was not in queue 
     }
+	
     /****************************************************************
      * Returns true if there are no meaningful elements in the queue
      * @return <i>true</i> if queue is empty, <i>false</i> otherwise
@@ -202,6 +210,7 @@ public class QQKachoo<T> implements Deque<T> {
     public boolean isEmpty() {
         return size == 0;
     }
+	
     /**********************************************************************
      * Attempts to remove the front of the queue. Returns the value if
      * successful, else returns null.
@@ -216,6 +225,7 @@ public class QQKachoo<T> implements Deque<T> {
             return null;
         }
     }
+	
     /**********************************************************************
      * Attempts to remove the front of the queue. Returns the value if
      * successful, else returns null.
@@ -227,6 +237,7 @@ public class QQKachoo<T> implements Deque<T> {
     public T pollFirst() {
         return poll();
     }
+	
     /**********************************************************************
      * Attempts to add given value to the front of the queue. Returns true
      * if successful, else returns false
@@ -241,6 +252,7 @@ public class QQKachoo<T> implements Deque<T> {
             return false;
         }
     }
+	
     /***********************************************************************
      * Attempts to look at the front of the queue. Returns the value if 
      * successful, else return null
@@ -255,6 +267,7 @@ public class QQKachoo<T> implements Deque<T> {
             return null;
         }
     }
+	
     /***********************************************************************
      * Attempts to look at the end of the queue. Returns the value if 
      * successful, else return null
@@ -269,6 +282,7 @@ public class QQKachoo<T> implements Deque<T> {
             return null;
         }
     }
+	
     /*********************************************************************
      * Attempts to add given value to the end of the queue. Returns true
      * if successful, else returns false
@@ -283,6 +297,7 @@ public class QQKachoo<T> implements Deque<T> {
             return false;
         }
     }
+	
     /******************************************************************
      * Searches through collection checking if given value is present.
      * Returns true if found, false otherwise
