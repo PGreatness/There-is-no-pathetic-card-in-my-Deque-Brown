@@ -24,8 +24,7 @@ public class QQKachoo<T> implements Deque<T> {
      * @see {@code addLast()}
      ******************************************/
     public void addFirst(T val) { //O(1)
-        DLLNode<T> tmp = new DLLNode<T>(val, null, null); //a temporary
-                                                          //node to store val
+        DLLNode<T> tmp = new DLLNode<T>(val, null, null); //a temp storage
         if (front == null || end == null) { //if the queue is empty
             front = tmp;
             end = tmp;
@@ -58,6 +57,7 @@ public class QQKachoo<T> implements Deque<T> {
      * Return the value of the front of the queue without altering
      * it.
      * @return <i>T</i> where <i>T</i> is a typed-variable
+     * @throws NoSuchElementException if queue is empty
      * @see {@code getLast()}
      **************************************************************/
     public T getFirst() {
@@ -70,6 +70,7 @@ public class QQKachoo<T> implements Deque<T> {
      * Return the value of the end of the queue without altering
      * it.
      * @return <i>T</i> where <i>T</i> is a typed-variable
+     * @throws NoSuchElementException if queue is empty
      * @see {@code getFirst()}
      ***********************************************************/
     public T getLast() {
@@ -90,6 +91,7 @@ public class QQKachoo<T> implements Deque<T> {
      * Remove the first element of the queue and return it.
      * The next element becomes the front.
      * @return <i>T</i>, where <i>T</i> is a typed-variable
+     * @throws NoSuchElementException if queue is empty
      * @see {@code removeLast()}
      ******************************************************/
     public T removeFirst() {
@@ -110,6 +112,7 @@ public class QQKachoo<T> implements Deque<T> {
      * Remove last element of the queue and return it.
      * The previous element becomes the end.
      * @return <i>T</i>, where <i>T</i> is a typed-variable
+     * @throws NoSuchElementException if queue is empty
      * @see {@code removeFirst()}
      ****************************************************/
     public T removeLast() {
@@ -199,7 +202,13 @@ public class QQKachoo<T> implements Deque<T> {
     public boolean isEmpty() {
         return size == 0;
     }
-
+    /**********************************************************************
+     * Attempts to remove the front of the queue. Returns the value if
+     * successful, else returns null.
+     * @return <i>T</i>, where <i>T</i> is a typed-variable, or <i>null</i>
+     * if queue is empty
+     * @see {@code removeFirst()}
+     **********************************************************************/
     public T poll() {
         try {
             return removeFirst();
@@ -207,9 +216,23 @@ public class QQKachoo<T> implements Deque<T> {
             return null;
         }
     }
+    /**********************************************************************
+     * Attempts to remove the front of the queue. Returns the value if
+     * successful, else returns null.
+     * @return <i>T</i>, where <i>T</i> is a typed-variable, or <i>null</i>
+     * if queue is empty
+     * @see {@code poll()} 
+     * @see {@code removeFirst()}
+     **********************************************************************/
     public T pollFirst() {
         return poll();
     }
+    /**********************************************************************
+     * Attempts to add given value to the front of the queue. Returns true
+     * if successful, else returns false
+     * @return <i>true</i> if val was added else <i>false</i> otherwise
+     * @see {@code addFirst()}
+     *********************************************************************/
     public boolean offerFirst(T val) {
         try {
             addFirst(val);
@@ -218,6 +241,13 @@ public class QQKachoo<T> implements Deque<T> {
             return false;
         }
     }
+    /***********************************************************************
+     * Attempts to look at the front of the queue. Returns the value if 
+     * successful, else return null
+     * @return <i>T</i>, where <i>T</i> is a typed-variable, or <i>null</i>
+     * if queue is empty
+     * @see {@code getFirst()}
+     ***********************************************************************/
     public T peekFirst() {
         try {
             return getFirst();
@@ -225,7 +255,13 @@ public class QQKachoo<T> implements Deque<T> {
             return null;
         }
     }
-
+    /***********************************************************************
+     * Attempts to look at the end of the queue. Returns the value if 
+     * successful, else return null
+     * @return <i>T</i>, where <i>T</i> is a typed-variable, or <i>null</i>
+     * if queue is empty
+     * @see {@code getLast()}
+     **********************************************************************/
     public T peekLast() {
         try {
             return getLast();
@@ -233,6 +269,12 @@ public class QQKachoo<T> implements Deque<T> {
             return null;
         }
     }
+    /*********************************************************************
+     * Attempts to add given value to the end of the queue. Returns true
+     * if successful, else returns false
+     * @return <i>true</i> if val was added else <i>false</i> otherwise
+     * @see {@code addLast()}
+     ********************************************************************/
     public boolean offerLast(T val) {
         try {
             addLast(val);
@@ -241,7 +283,11 @@ public class QQKachoo<T> implements Deque<T> {
             return false;
         }
     }
-
+    /******************************************************************
+     * Searches through collection checking if given value is present.
+     * Returns true if found, false otherwise
+     * @return <i>true</i> if val was found, <i>false</i> otherwise
+     *****************************************************************/
     public boolean contains(T val) {
         Iterator<T> itr = this.iterator();
         while (itr.hasNext()) {
@@ -268,6 +314,7 @@ public class QQKachoo<T> implements Deque<T> {
     {
 	return new MyIterator();
     }
+    
     //Nested class Iterator
     private class MyIterator implements Iterator<T> 
     {
