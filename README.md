@@ -2,23 +2,25 @@
 ## By Team Lenovo 3.0 (Roster: Ahnaf Hasan, Kevin Wang, Peter Cwalina)
 
 The methods defined from the [Deque API](https://docs.oracle.com/javase/7/docs/api/java/util/Deque.html) page in QQKachoo are as follows.
-- size()
-- addFirst()
-- addLast()
-- peekFirst()
-- peekLast()
-- removeFirst()
-- removeLast()
-- removeFirstOccurrence()
-- removeLastOccurrence()
-- Iterator()
-- poll()
-- pollFirst()
-- offerFirst()
-- offerLast()
-- contains()
+- `size()` - returns length of the queue, needed for `isEmpty()`
+- `addFirst()` - adds value to the front of the queue
+- `addLast()` - adds value to the end of the queue
+- `peekFirst()` - returns the value at the front of the queue
+- `peekLast()` - returns the value at the end of the queue
+- `removeFirst()` - removes the first element of the queue and returns it
+- `removeLast()` - removes the last element of the queue and returns it
+- `removeFirstOccurrence()` - removes the first occurrence of the value in the queue from the front. If not found, return `null`
+- `removeLastOccurrence()` - removes the last of occurrence of the value in the queue from the front. If not found, return `null` 
+- `Iterator()` - iterate through the queue
+- `poll()` - safely removes the first element in the queue. If there are no elements remaining, return `null`
+- `pollFirst()` - safely remove the first element in the queue. If there are no elements remaining, return `null`
+- `offerFirst()` - safely add the value to the front of the queue. If it violates anything, return `false`, else, return `true`
+- `offerLast()` - safely add the value to the end of the queue. If it violates anything, return `false`, else, return `true`
+- `contains()` - iterate through the queue to check if the value is in the queue. If found, return `true`, else return `false`
 
 _Note that the implementation of the methods may not reflect the order that they were placed in in the README_
+
+_See [Projects](https://github.com/PGreatness/There-is-no-pathetic-card-in-my-Deque-Brown/projects) tab for to-do list and details_
 
 A doubly linked node-based architecture was implemented because it allows easy trasversal between nodes, and saves both time and memory by having both a front an end modifiable in constant time.
 
