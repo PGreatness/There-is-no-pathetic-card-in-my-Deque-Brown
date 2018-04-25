@@ -42,7 +42,7 @@ public class QQKachoo<T> implements Deque<T> {
      * @param val value to be added
      * @see {@code addFirst()}
      **************************************/
-    public void addLast(T val) {
+    public void addLast(T val) { //O(1)
         DLLNode<T> tmp = new DLLNode<T>(val, null, null); //temp storage
         if (front == null || end == null) { //queue is empty
             front = tmp;
@@ -62,7 +62,7 @@ public class QQKachoo<T> implements Deque<T> {
      * @throws NoSuchElementException if queue is empty
      * @see {@code getLast()}
      **************************************************************/
-    public T getFirst() {
+    public T getFirst() { //O(1)
         if (front == null) {
             throw new NoSuchElementException();
         }
@@ -76,7 +76,7 @@ public class QQKachoo<T> implements Deque<T> {
      * @throws NoSuchElementException if queue is empty
      * @see {@code getFirst()}
      ***********************************************************/
-    public T getLast() {
+    public T getLast() { //O(1)
         if (end == null) {
             throw new NoSuchElementException();
         }
@@ -87,7 +87,7 @@ public class QQKachoo<T> implements Deque<T> {
      * Return the number of meaningful elements in the queue
      * @return <i>int</i>, number of meaningful elements in queue
      ********************************************************/
-    public int size() {
+    public int size() { //O(1)
         return size;
     }
 
@@ -98,7 +98,7 @@ public class QQKachoo<T> implements Deque<T> {
      * @throws NoSuchElementException if queue is empty
      * @see {@code removeLast()}
      ******************************************************/
-    public T removeFirst() {
+    public T removeFirst() { //O(1)
         DLLNode<T> tmp; //a temp storage used for the cargo it holds
         if (front == null) { //front doesn't exist, therefore, queue is empty
             throw new NoSuchElementException();
@@ -120,7 +120,7 @@ public class QQKachoo<T> implements Deque<T> {
      * @throws NoSuchElementException if queue is empty
      * @see {@code removeFirst()}
      ****************************************************/
-    public T removeLast() {
+    public T removeLast() { //O(1)
         DLLNode<T> tmp; //tmp storage used for the cargo
         if (end == null) { //end doesn't exist because queue is empty
             throw new NoSuchElementException();
@@ -143,7 +143,7 @@ public class QQKachoo<T> implements Deque<T> {
      * in queue
      * @see {@code removeLastOccurrence()}
      ******************************************************************/
-    public boolean removeFirstOccurrence(T val) {
+    public boolean removeFirstOccurrence(T val) { //O(n)
         DLLNode<T> tmp = front; //tmp to iterate through collection
         while (tmp != null) { //tmp checked all through to end
             if (tmp.getCargo().equals(val)) { //the value of tmp is equal to given
@@ -177,7 +177,7 @@ public class QQKachoo<T> implements Deque<T> {
      *  if doesn't exist in queue
      * @see {@code removeFirstOccurrence()}
      *****************************************************************/
-    public boolean removeLastOccurrence(T val) {
+    public boolean removeLastOccurrence(T val) { //O(n)
         DLLNode<T> tmp = end; //tmp to iterate through collection
         while (tmp != null) { //tmp checked through all through to the front
             if (tmp.getCargo().equals(val)) { //tmp's cargo matches given
@@ -207,7 +207,7 @@ public class QQKachoo<T> implements Deque<T> {
      * Returns true if there are no meaningful elements in the queue
      * @return <i>true</i> if queue is empty, <i>false</i> otherwise
      ***************************************************************/
-    public boolean isEmpty() {
+    public boolean isEmpty() { //O(1)
         return size == 0;
     }
 	
@@ -218,7 +218,7 @@ public class QQKachoo<T> implements Deque<T> {
      * if queue is empty
      * @see {@code removeFirst()}
      **********************************************************************/
-    public T poll() {
+    public T poll() { //O(1)
         try {
             return removeFirst();
         }catch(Exception e) {
@@ -234,7 +234,7 @@ public class QQKachoo<T> implements Deque<T> {
      * @see {@code poll()} 
      * @see {@code removeFirst()}
      **********************************************************************/
-    public T pollFirst() {
+    public T pollFirst() { //O(1)
         return poll();
     }
 	
@@ -244,7 +244,7 @@ public class QQKachoo<T> implements Deque<T> {
      * @return <i>true</i> if val was added else <i>false</i> otherwise
      * @see {@code addFirst()}
      *********************************************************************/
-    public boolean offerFirst(T val) {
+    public boolean offerFirst(T val) { //O(1)
         try {
             addFirst(val);
             return true;
@@ -260,7 +260,7 @@ public class QQKachoo<T> implements Deque<T> {
      * if queue is empty
      * @see {@code getFirst()}
      ***********************************************************************/
-    public T peekFirst() {
+    public T peekFirst() { //O(1)
         try {
             return getFirst();
         }catch(Exception e) {
@@ -275,7 +275,7 @@ public class QQKachoo<T> implements Deque<T> {
      * if queue is empty
      * @see {@code getLast()}
      **********************************************************************/
-    public T peekLast() {
+    public T peekLast() { //O(1)
         try {
             return getLast();
         }catch(Exception e) {
@@ -289,7 +289,7 @@ public class QQKachoo<T> implements Deque<T> {
      * @return <i>true</i> if val was added else <i>false</i> otherwise
      * @see {@code addLast()}
      ********************************************************************/
-    public boolean offerLast(T val) {
+    public boolean offerLast(T val) { //O(1)
         try {
             addLast(val);
             return true;
@@ -303,7 +303,7 @@ public class QQKachoo<T> implements Deque<T> {
      * Returns true if found, false otherwise
      * @return <i>true</i> if val was found, <i>false</i> otherwise
      *****************************************************************/
-    public boolean contains(T val) {
+    public boolean contains(T val) { //O(n)
         Iterator<T> itr = this.iterator();
         while (itr.hasNext()) {
             T nodeCargo = itr.next();
