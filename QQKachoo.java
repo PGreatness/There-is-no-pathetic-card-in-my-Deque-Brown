@@ -1,3 +1,8 @@
+//Team Lenovo-3.0 (Roster: Ahnaf Hasan, Peter Cwalina, Kevin Wang)
+//APCS2 pd08
+//L#02 -- All Hands on Deque!
+//2018-04-20
+    
 /******************************************************************
  * Class QQKachoo<T>
  * Implements interface Deque. Uses doubly linked nodes (DLLNodes)
